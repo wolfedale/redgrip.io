@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RedGrip</title>
+
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+
+    <div id="pageloader" class="pageloader is-left-to-right is-theme"></div>
+    <div id="infraloader" class="infraloader is-active"></div>    
+    <div class="dark-wrapper">
+        <!-- Landing page Hero -->
+        <section class="hero is-fullheight is-transparent">
+            <div class="hero-head">
+    
+                <!-- Cloned navbar -->
+                <!-- Cloned navbar that comes in on scroll -->
+                <nav x-data="initNavbar()"  x-on:scroll.window="scroll()" id="navbar-clone" class="navbar is-fixed is-dark" :class="{
+                        'is-active': scrolled,
+                        '': !scrolled
+                    }">
+                    <div class="container">
+                        <!-- Brand -->
+                        <div class="navbar-brand">
+                            <a href="/" class="navbar-item">
+                                <img class="rotating" src="img/logo/krypton-gradient.svg" alt="">
+                                <span class="brand-name">RedGrip.io</span>
+                            </a>
+                            <!-- Responsive toggle -->
+                            <div class="navbar-burger" @click="openMobileMenu()">
+                                <div class="menu-toggle">
+                                    <span class="icon-box-toggle" :class="{
+                                            'active': mobileOpen,
+                                            '': !mobileOpen
+                                        }">
+                                        <span class="rotate">
+                                            <i class="icon-line-top"></i>
+                                            <i class="icon-line-center"></i>
+                                            <i class="icon-line-bottom"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Menu -->
+                        <div id="cloneNavbarMenu" class="navbar-menu" :class="{
+                                'is-active': mobileOpen,
+                                '': !mobileOpen
+                            }">
+                            <div class="navbar-end">
+                                <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="#what-we-do-id">What we do</a>
+                                </div>
+                                <!-- Menu item-->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="#founder-id">Founder</a>
+                                </div>
+                                <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="#contact-id">
+                                        <img class="telegram" src="img/logo/telegram.svg" alt="">
+                                        Contact
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <!-- /Cloned navbar -->
+                <!-- Static navbar -->
+                <!-- Static navbar -->
+                <nav x-data="initNavbar()" class="navbar is-light" :class="{
+                        'is-dark-mobile': mobileOpen,
+                        '': !mobileOpen
+                    }">
+                    <div class="container">
+                        <!-- Brand -->
+                        <div class="navbar-brand">
+                            <a href="/" class="navbar-item">
+                                <img class="rotating" src="img/logo/krypton.svg" alt="">
+                                <span class="brand-name">RedGrip.io</span>
+                            </a>
+                            <!-- Responsive toggle -->
+                            <div class="navbar-burger" @click="openMobileMenu()">
+                                <div class="menu-toggle">
+                                    <span class="icon-box-toggle" :class="{
+                                            'active': mobileOpen,
+                                            '': !mobileOpen
+                                        }">
+                                        <span class="rotate">
+                                            <i class="icon-line-top"></i>
+                                            <i class="icon-line-center"></i>
+                                            <i class="icon-line-bottom"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Menu -->
+                        <div id="navbarMenu" class="navbar-menu light-menu" :class="{
+                                'is-active': mobileOpen,
+                                '': !mobileOpen
+                            }">
+                            <div class="navbar-end">
+                                <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="#what-we-do-id">What we do</a>
+                                </div>
+                                 <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="#founder-id">Founder</a>
+                                </div>
+                                <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="#contact-id">
+                                        <img class="telegram" src="img/logo/telegram.svg" alt="">
+                                        Contact
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <!-- /Static navbar -->
+            </div>
+    
+            <!-- Animated particles -->
+            <div x-data="initHero()" x-init="initParticles()" id="particles-js"></div>
+    
+            <!-- Hero Image and Title -->
+            <div class="hero-body">
+                <div class="container">
+                    <div class="columns is-vcentered">
+    
+                        <!-- Landing page Title -->
+                        <div class="column is-5 landing-caption">
+                            <h1 class="title is-1 is-light is-semibold is-spaced main-title">Thank you for contacting us!</h1>
+                            <h2 class="subtitle is-5 is-light is-thin">
+                              we will get back to you soon.
+                            </h2>
+    
+                        </div>
+                        <!-- Hero image -->
+                        <div class="column is-7">
+                            <figure class="image">
+                                <img src="img/illustrations/face.png" width="400" height="497" alt=""> 
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Hero footer -->
+            <div class="hero-foot">
+                <div class="container">
+                    <div class="tabs is-centered">
+                        <!-- Client / partner list -->
+                        <ul>
+                            <li><a><img class="hero-logo" src="img/clients/Kubernetes_logo.svg" width="200"alt=""></a></li>
+                            <li><a><img class="hero-logo" src="img/clients/Go-Logo_Aqua.svg" alt=""></a></li>
+                            <li><a><img class="hero-logo" src="img/clients/cncf-color.svg" width="200" alt=""></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /Landing page Hero -->
+
+                <!-- What we do section -->
+                <a id="what-we-do-id"></a>
+        <section id="start" class="section is-transparent is-relative">
+                      <!-- Container -->
+            <div class="container">
+                <!-- Divider -->
+                <div class="divider is-centered"></div>
+                <!-- Title & subtitle -->
+
+                <!-- Content wrapper -->
+                <div class="content-wrapper is-large">
+                    <div class="columns is-vcentered">
+
+                        <!-- Feature content -->
+                        <div class="column is-5 is-offset-1">
+                            <div class="side-feature-content">
+
+                                <h3 class="title is-4 is-light"><img src="img/icons/ico/bitmining.svg" alt=""> <span>Who we are - Technologies we use</span></h3>
+                                <div class="divider is-long"></div>
+                                <p class="is-light">We were born in 2021 in Bernau, near the beautiful Berlin. From the beginning, we've aimed to develop and improve our clients businesses. We spent the last 15 years building large scale production systems.</p>
+                            </div>
+                        </div>
+                                    <div class="column is-5">
+                                        <img class="animated preFadeInUp fadeInUp" src="img/illustrations/blockchain-blocks.svg" alt="">
+                                    </div>
+                            </div>
+
+
+
+   <div class="columns is-vcentered">
+                        <!-- Feature image desktop -->
+                        <div class="column is-7 is-hidden-mobile">
+                            <img class="side-feature" src="img/illustrations/crypto-mining.svg" alt="">
+                        </div>
+
+                        <!-- Feature content -->
+                        <div class="column is-5">
+                            <div class="side-feature-content">
+
+                              <h3 class="title is-4 is-light"><img src="img/icons/ico/bitnetwork.svg" alt=""> <span>Kubernetes</span></h3>
+                                <div class="divider is-long"></div>
+                                <p class="is-light">
+                                  We work with Kubernetes. Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation.
+                                </p>
+                            </div>
+
+    <br>
+                            <div class="side-feature-content">
+                              <h3 class="title is-4 is-light"><img src="img/icons/ico/bitbanner.svg" alt=""> <span>Go</span></h3>
+                                <div class="divider is-long"></div>
+                                <p class="is-light">For most of our projects we use Go. Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.</p>
+                                </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+        </section>
+
+        <!-- App section -->
+         <!-- Contact section -->
+         <a id="contact-id"></a>
+         <section class="section is-medium is-white">
+             <!-- Container -->
+             <div class="container">
+                 <!-- Divider -->
+                 <div class="divider is-centered"></div>
+                 <!-- Title & subtitle -->
+                 <h2 class="title is-darkv2 is-semibold has-text-centered is-spaced">Let's start our cooperation!</h2>
+                 <h4 class="subtitle is-6 is-darkv2 has-text-centered is-compact">Thank you for your interest. Please fill out the form to get in touch with us. We'll get back to you shortly.</h4>
+
+                 <!-- Content wrapper -->
+                 <div class="content-wrapper is-large">
+                     <div class="columns">
+                         <div class="column is-6 is-offset-3">
+                             <!-- Form -->
+                            
+                             
+                            <form class="contact-form" action="/" method="POST">
+                                 <!-- Field -->
+                                 <div class="control-material is-secondary">
+                                    <input class="material-input " type="text" name="name" required>
+                                    <span class="material-highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Your name *</label>
+                                </div>
+                                <!-- Field -->
+                                 <div class="control-material is-secondary">
+                                     <input class="material-input " type="email" name="email" required>
+                                     <span class="material-highlight"></span>
+                                     <span class="bar"></span>
+                                     <label>Your email address *</label>
+                                 </div>
+                                 <!-- Field -->
+                                 <div class="control-material-v2 is-secondary">
+                                        <textarea class="material-input " name="content" cols="40" rows="5" required></textarea>
+                                    <!--<input class="material-input " cols="40" rows="5" type="text" name="content" required>-->
+                                    <span class="material-highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>How can we help you? *</label>
+                                </div>
+
+                                <div>
+                                    <input class="text" type="submit" value="Send message">
+                                </div>
+                            </form>
+                                <!--<span class="text">Send message</span>-->
+                                         <span class="front-gradient"></span>
+                                     </button>
+                                 </div>
+                             </form>
+                             <!-- /Form -->
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <!-- Container -->
+		</section>
+
+        <!-- Company section -->
+        <a id="founder-id"></a>
+        <section class="section is-medium has-big-dark-gradient">
+            <!-- Container -->
+            <div class="container">
+                <!-- Title & subtitle -->
+                <div class="content-wrapper is-large">
+                    <!-- Title & subtitle -->
+                    <h2 class="title is-light is-semibold has-text-centered is-spaced">Do you have any quetions?</h2>
+
+                    <div class="advisor-container has-text-centered">
+                        <div class="photo">
+                            <img src="img/team/a1.png" alt="" data-aos="fade-down" data-aos-delay="100" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                        </div>
+                        <div class="info">
+                            <div class="subtitle is-6 is-light is-compressed">Klaudia Grzesik</div>
+                                <div class="position">Founder</div>
+                            </div>
+                        </div>
+
+                    <br>
+                    <h4 class="subtitle is-6 is-light has-text-centered is-compact"> As the Founder, Klaudia defines RedGrip product vision and strategy. She also ensures that the product and technology meets customer demands. Before founding the company RedGrip, Klaudia completed her graduate studies in Human Resources at the Cracow University of Economics.
+                    </h4>
+
+                    <!-- /Content wrapper -->
+                </div>
+                <!-- /Content wrapper -->
+            </div>
+        </section>
+        <!-- /Company section -->
+
+    <footer class="krypton-footer">
+        <div class="container">
+            <!-- Copyright -->
+            <p class="k-copyright">© 2021 RedGrip® GmbH. All rights reserved.</p>
+        </div>
+    </div>
+    <div x-data="initBackToTop()" x-on:scroll.window="scroll($event)" @click="goTop($event)" id="backtotop"><a href="javascript:" :class="{
+        'visible': scrolled,
+        '': !scrolled
+    }"></a></div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="./js/bundle.js"></script>
+
+</body>
+
+</html>
