@@ -38,7 +38,7 @@ func main() {
 	router.PathPrefix(jsDir).Handler(http.StripPrefix(jsDir, http.FileServer(http.Dir("."+jsDir))))
 
 	log.Println("Listening...")
-	err := http.ListenAndServe(":3000", router)
+	err := http.ListenAndServe(":8080", router)
 	if err != nil {
 		log.Fatal(err)
 	}
