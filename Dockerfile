@@ -1,4 +1,4 @@
-FROM golang:1.16-alpine as builder
+FROM golang:1.15-alpine as builder
 RUN adduser -D -g '' appuser
 RUN apk update && apk add --no-cache make git ca-certificates && update-ca-certificates
 ADD . /go/src/app
