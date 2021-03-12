@@ -4,13 +4,13 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 	"regexp"
 	"strings"
-  "os"
 
 	"github.com/go-mail/mail"
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
-  "github.com/gorilla/handlers"
 )
 
 var rxEmail = regexp.MustCompile(".+@.+\\..+")
@@ -39,7 +39,7 @@ func main() {
 	jsDir := "/js/"
 	router.PathPrefix(jsDir).Handler(http.StripPrefix(jsDir, http.FileServer(http.Dir("."+jsDir))))
 
-  loggedRouter := handlers.LoggingHandler(os.Stdout, router)
+	loggedRouter := handlers.LoggingHandler(os.Stdout, router)
 
 	log.Println("Listening...")
 	err := http.ListenAndServe(":8080", loggedRouter)
