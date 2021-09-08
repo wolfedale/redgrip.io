@@ -3,7 +3,6 @@ RUN adduser -D -g '' appuser
 RUN apk update && apk add --no-cache make git ca-certificates && update-ca-certificates
 ADD . /go/src/app
 WORKDIR /go/src/app
-RUN go get github.com/go-mail/mail
 RUN go get github.com/gorilla/mux
 RUN go get github.com/gorilla/handlers
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-w -extldflags -s" -o ./app ./main.go
@@ -19,6 +18,5 @@ COPY --from=builder /go/src/app/fonts /fonts
 COPY --from=builder /go/src/app/app /app
 COPY --from=builder /go/src/app/index.html /index.html
 COPY --from=builder /go/src/app/home.html /home.html
-COPY --from=builder /go/src/app/confirmation.html /confirmation.html
 USER appuser
 ENTRYPOINT ["/app"]
